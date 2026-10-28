@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Jovica Topaloski — Front-End & HTML5 Banners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1115;
+      --surface: #171a21;
+      --border: #262a33;
+      --text: #e9ecf1;
+      --muted: #9aa3b2;
+      --accent: #6ee7b7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* Header */
+    header { padding: 64px 0 48px; border-bottom: 1px solid var(--border); }
+    .tag {
+      display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+    }
+    h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.1; font-weight: 700; margin-bottom: 20px; }
+    .lead { font-size: 18px; color: var(--muted); max-width: 640px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+    .chip {
+      font-size: 13px; padding: 6px 12px; border: 1px solid var(--border);
+      border-radius: 999px; color: var(--muted);
+    }
+
+    /* Sections */
+    section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .section-sub { color: var(--muted); margin-bottom: 36px; }
+
+    /* Banner gallery */
+    .brand { margin-bottom: 56px; }
+    .brand:last-child { margin-bottom: 0; }
+    .brand h3 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+    .brand p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .banners {
+      display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start;
+    }
+    .banner {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 16px; max-width: 100%; overflow-x: auto;
+    }
+    .banner iframe { display: block; border: 0; background: #fff; }
+    .banner .meta {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 12px; font-size: 12px; color: var(--muted);
+    }
+    .replay {
+      font: inherit; font-size: 12px; color: var(--accent); background: none;
+      border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; cursor: pointer;
+    }
+    .replay:hover { border-color: var(--accent); }
+
+    /* Websites */
+    .sites { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    .site {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px;
+    }
+    .site h3 { font-size: 18px; margin-bottom: 6px; }
+    .site p { font-size: 14px; color: var(--muted); margin-bottom: 14px; }
+
+    /* Contact */
+    .contact { text-align: center; padding: 80px 0; border-bottom: 0; }
+    .contact h2 { margin-bottom: 12px; }
+    .contact p { color: var(--muted); margin-bottom: 28px; }
+    .btn {
+      display: inline-block; background: var(--accent); color: #0f1115; font-weight: 600;
+      padding: 14px 28px; border-radius: 10px;
+    }
+    .btn:hover { text-decoration: none; opacity: .9; }
+    footer { text-align: center; font-size: 13px; color: var(--muted); padding: 24px 0 40px; }
+
+    @media (max-width: 600px) {
+      header { padding: 48px 0 36px; }
+      section { padding: 48px 0; }
+      .wrap { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="wrap">
+      <span class="tag">Front-End Developer · 12+ years</span>
+      <h1>HTML5 banners, WordPress sites<br>and e-commerce front-end.</h1>
+      <p class="lead">I help agencies and brands ship pixel-perfect work, fast. Full banner sets from Figma, animated with GSAP and built to ad-network specs. Available for freelance and white-label projects.</p>
+      <div class="chips">
+        <span class="chip">GSAP</span>
+        <span class="chip">HTML5 / CSS / JS</span>
+        <span class="chip">WordPress & WooCommerce</span>
+        <span class="chip">React</span>
+        <span class="chip">Salesforce Commerce Cloud</span>
+        <span class="chip">Figma</span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2>HTML5 banner ads</h2>
+      <p class="section-sub">Live examples. Every banner runs in the browser exactly as it would in an ad placement.</p>
+
+      <!-- BRAND 1 -->
+      <div class="brand">
+        <h3>Brand One</h3>
+        <p>Short description of the campaign and animation style.</p>
+        <div class="banners">
+          <div class="banner">
+            <iframe src="banners/brand-one/300x250/index.html" width="300" height="250" loading="lazy" title="Brand One 300x250"></iframe>
+            <div class="meta"><span>300×250</span><button class="replay">Replay</button></div>
+          </div>
+          <div class="banner">
+            <iframe src="banners/brand-one/300x600/index.html" width="300" height="600" loading="lazy" title="Brand One 300x600"></iframe>
+            <div class="meta"><span>300×600</span><button class="replay">Replay</button></div>
+          </div>
+          <div class="banner">
+            <iframe src="banners/brand-one/728x90/index.html" width="728" height="90" loading="lazy" title="Brand One 728x90"></iframe>
+            <div class="meta"><span>728×90</span><button class="replay">Replay</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRAND 2 -->
+      <div class="brand">
+        <h3>Brand Two</h3>
+        <p>Short description of the campaign and animation style.</p>
+        <div class="banners">
+          <div class="banner">
+            <iframe src="banners/brand-two/300x250/index.html" width="300" height="250" loading="lazy" title="Brand Two 300x250"></iframe>
+            <div class="meta"><span>300×250</span><button class="replay">Replay</button></div>
+          </div>
+          <div class="banner">
+            <iframe src="banners/brand-two/160x600/index.html" width="160" height="600" loading="lazy" title="Brand Two 160x600"></iframe>
+            <div class="meta"><span>160×600</span><button class="replay">Replay</button></div>
+          </div>
+          <div class="banner">
+            <iframe src="banners/brand-two/320x50/index.html" width="320" height="50" loading="lazy" title="Brand Two 320x50"></iframe>
+            <div class="meta"><span>320×50</span><button class="replay">Replay</button></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copy a .brand block above to add more brands -->
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Websites</h2>
+      <p class="section-sub">WordPress and WooCommerce projects.</p>
+      <div class="sites">
+        <div class="site">
+          <h3>Radostan Kilims</h3>
+          <p>Portfolio website for a kilim gallery. WordPress, custom theme.</p>
+          <a href="https://radostan.rs/" target="_blank" rel="noopener">Visit site →</a>
+        </div>
+        <!-- Add more .site cards here -->
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="wrap">
+      <h2>Have a project?</h2>
+      <p>Send me your brief and I'll get back to you with a quote.</p>
+      <a class="btn" href="mailto:jtopaloski@gmail.com">jtopaloski@gmail.com</a>
+    </div>
+  </section>
+
+  <footer>© Jovica Topaloski</footer>
+
+  <script>
+    // Replay: reload the banner iframe to restart its animation
+    document.querySelectorAll('.replay').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var frame = btn.closest('.banner').querySelector('iframe');
+        frame.src = frame.src;
+      });
+    });
+  </script>
+</body>
+</html>
