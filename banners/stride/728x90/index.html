@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="ad.size" content="width=728,height=90"><title>Stride 728x90</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@500;700&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/SplitText.min.js"></script><script>var clickTag="https://example.com"</script><style>*,*::before,*::after{box-sizing:border-box}html,body{margin:0;padding:0}p{margin:0}#banner{position:relative;width:728px;height:90px;overflow:hidden;cursor:pointer}</style><style>
+#banner{background:#0A0A0A;color:#fff;font-family:"Inter",sans-serif}
+.fx{position:absolute;width:0;height:0}
+.lines{position:absolute;inset:-20px;background:repeating-linear-gradient(115deg,rgba(255,255,255,.07) 0 2px,transparent 2px 16px)}
+.glitch{position:absolute;inset:0;filter:url(#glitch)}
+.panel{position:absolute;background:linear-gradient(135deg,#FF7A3D 0%,#FF5A1F 55%,#E2400A 100%);transform-origin:0 0}
+.panel::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(0,0,0,.08) 0 2px,transparent 2px 12px)}
+.heading{position:absolute;font-family:"Anton",sans-serif;text-transform:uppercase;line-height:.9;letter-spacing:.005em;opacity:0}
+.sub{position:absolute;font-weight:500;color:#D9D9D9;opacity:0}
+.sub b{color:#FF5A1F;font-weight:700}
+.logo{position:absolute;font-family:"Anton",sans-serif;letter-spacing:.06em;opacity:0;display:flex;align-items:center;gap:4px}
+.logo span{display:inline-block;width:.55em;height:1em;background:#fff;transform:skewX(-20deg)}
+.cta{position:absolute;display:flex;align-items:center;justify-content:center;background:#fff;color:#0A0A0A;border:0;border-radius:2px;font-family:inherit;font-weight:700;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;overflow:hidden;opacity:0;transform:scale(.6);--shine-x:-120%}
+.cta::before{content:"";position:absolute;top:-50%;left:0;width:45%;height:200%;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,122,61,.35) 45%,rgba(255,255,255,0) 100%);transform:translateX(var(--shine-x)) skewX(-20deg)}
+.cta span{position:relative;z-index:1}
+.noise{position:absolute;inset:0;opacity:0;pointer-events:none;mix-blend-mode:overlay;background:repeating-linear-gradient(0deg,rgba(0,0,0,.6) 0 1px,transparent 1px 2px)}
+
+.panel{left:500px;top:0;width:300px;height:90px;transform:skewX(-14deg)}
+.heading{top:12px;left:18px;font-size:64px;white-space:nowrap}
+.sub{top:36px;left:330px;font-size:11px;white-space:nowrap}
+.cta{right:20px;top:27px;width:100px;height:36px;font-size:11px}
+.logo{left:522px;top:33px;font-size:20px}
+</style></head><body><div id="banner" onclick='window.open(clickTag,"_blank")'>
+<svg class="fx" aria-hidden="true"><defs><filter id="glitch" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+<feTurbulence id="g-noise" type="fractalNoise" baseFrequency="0.00001 0.3" numOctaves="1" seed="2" result="n0"/>
+<feColorMatrix in="n0" type="matrix" result="n" values="1 0 0 0 0 0 0 0 0 .5 0 0 1 0 0 0 0 0 1 0"/>
+<feDisplacementMap id="g-disp" in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G" result="d"/>
+<feColorMatrix in="d" type="matrix" result="r" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+<feColorMatrix in="d" type="matrix" result="g" values="0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+<feColorMatrix in="d" type="matrix" result="b" values="0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0"/>
+<feOffset id="g-r" in="r" dx="0" result="ro"/><feOffset id="g-b" in="b" dx="0" result="bo"/>
+<feBlend in="ro" in2="g" mode="screen" result="rg"/><feBlend in="rg" in2="bo" mode="screen"/>
+</filter></defs></svg>
+<div class="lines"></div>
+<div class="glitch"><div class="panel"></div><p class="heading">Run. Faster.</p></div>
+<p class="sub"><b>Stride Pro.</b> Built for speed.</p>
+<button class="cta"><span>Shop now</span></button>
+<div class="logo"><span></span>STRIDE</div>
+<div class="noise"></div>
+</div>
+<script>
+window.onload=function(){document.fonts.ready.then(function(){
+gsap.registerPlugin(SplitText);
+var chars=SplitText.create(".heading",{type:"words,chars"}).chars;
+/* deterministic shuffle so every loop reveals letters in the same "random" order */
+var order=chars.map(function(c,i){return i}),seed=7;
+for(var i=order.length-1;i>0;i--){seed=(1103515245*seed+12345)%2147483648;var j=seed%(i+1),t=order[i];order[i]=order[j];order[j]=t}
+var rank=[];order.forEach(function(c,i){rank[c]=i});
+gsap.set(chars,{opacity:0});gsap.set(".heading",{opacity:1});
+gsap.set(".panel",{xPercent:-130});
+gsap.to(".lines",{x:-17.654,duration:.5,ease:"none",repeat:-1});
+/* [time, displacement, rgb split, noise, seed, share of letters visible] */
+var keys=[[0,14,3,.35,3,0],[.06,0,0,0,3,.1],[.12,26,6,.6,11,.25],[.2,4,1,.15,11,.4],[.28,32,8,.7,19,.55],[.36,0,0,0,19,.65],[.44,20,5,.5,27,.8],[.52,6,2,.2,27,.9],[.6,0,0,0,27,1]];
+var tl=gsap.timeline({repeat:-1});
+function burst(at,reveal){keys.forEach(function(k){
+  var n=Math.round((reveal?k[5]:1-k[5])*chars.length);
+  tl.set("#g-disp",{attr:{scale:k[1]}},at+k[0])
+    .set("#g-noise",{attr:{seed:k[4]}},at+k[0])
+    .set("#g-r",{attr:{dx:k[2]}},at+k[0])
+    .set("#g-b",{attr:{dx:-k[2]}},at+k[0])
+    .set(".noise",{opacity:k[3]},at+k[0])
+    .set(chars,{opacity:function(c){return rank[c]<n?1:0}},at+k[0]);
+})}
+burst(0,true);
+tl.to(".panel",{xPercent:0,duration:.45,ease:"power4.out"},1.1);
+burst(1.1,true);
+tl.to(".sub",{opacity:1,x:0,duration:.5,ease:"power2.out",startAt:{x:-12}},1.9)
+  .to(".logo",{opacity:1,duration:.4},2.1)
+  .to(".cta",{opacity:1,scale:1,duration:.35,ease:"back.out(2)"},2.4)
+  .fromTo(".cta",{"--shine-x":"-120%"},{"--shine-x":"260%",duration:.9,ease:"power1.inOut",immediateRender:false},3)
+  .fromTo(".cta",{"--shine-x":"-120%"},{"--shine-x":"260%",duration:.9,ease:"power1.inOut",immediateRender:false},4.6)
+  .to([".sub",".logo",".cta"],{opacity:0,duration:.3},6)
+  .to(".panel",{xPercent:130,duration:.4,ease:"power3.in"},6.1);
+burst(6.1,false);
+tl.to({},{duration:.3},6.7);
+})};
+</script></body></html>
