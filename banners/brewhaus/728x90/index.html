@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="ad.size" content="width=728,height=90"><title>Brewhaus 728x90</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/SplitText.min.js"></script><script>var clickTag="https://example.com"</script><style>*,*::before,*::after{box-sizing:border-box}html,body{margin:0;padding:0}p{margin:0}#banner{position:relative;width:728px;height:90px;overflow:hidden;cursor:pointer}</style><style>
+#banner{background:radial-gradient(120% 90% at 70% 75%,#5A3C28 0%,#2B1D14 62%);color:#F3E9DC;font-family:"Inter",sans-serif}
+.frame{position:absolute;inset:0;opacity:0}
+.heading{position:absolute;font-family:"Playfair Display",serif;font-weight:600;line-height:1.05;letter-spacing:-.01em}
+.heading em{color:#E0A36E}
+.sub{position:absolute;color:#C8834A;font-weight:600;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.cta{position:absolute;display:flex;align-items:center;justify-content:center;background:#C8834A;color:#2B1D14;border:0;border-radius:4px;font-family:inherit;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;clip-path:inset(0 50% 0 50% round 4px)}
+.logo{position:absolute;display:flex;align-items:center;gap:6px;font-weight:700;letter-spacing:.28em;color:#F3E9DC}
+.logo svg{display:block}
+.cup{position:absolute;transform-origin:50% 100%}
+.cup .steam path{fill:none;stroke:#F3E9DC;stroke-width:3;stroke-linecap:round;opacity:0}
+
+.heading{top:20px;left:170px;width:330px;font-size:23px;white-space:nowrap}
+.sub{top:56px;left:170px;font-size:9px}
+.cta{right:18px;top:29px;width:126px;height:32px;font-size:10px}
+.logo{left:18px;top:38px;font-size:11px}
+.cup{left:490px;top:4px;width:72px;height:86px}
+</style></head><body><div id="banner" onclick='window.open(clickTag,"_blank")'>
+<svg class="cup" viewBox="0 0 150 180" preserveAspectRatio="xMidYMax meet">
+<g class="steam"><path d="M58 70c-8-10 8-16 0-28s8-18 2-26"/><path d="M76 66c-8-10 8-16 0-28s8-18 2-26"/><path d="M94 70c-8-10 8-16 0-28s8-18 2-26"/></g>
+<ellipse cx="76" cy="168" rx="70" ry="9" fill="#1C120C" opacity=".55"/>
+<ellipse cx="76" cy="160" rx="66" ry="12" fill="#E8DCCB"/><ellipse cx="76" cy="157" rx="52" ry="7" fill="#D6C7B2"/>
+<path d="M120 98c22 0 26 34 0 38" stroke="#F3E9DC" stroke-width="9" fill="none" stroke-linecap="round"/>
+<path d="M28 86h96v44c0 18-16 28-48 28s-48-10-48-28z" fill="#F3E9DC"/>
+<path d="M28 86h96v10H28z" fill="#E8DCCB"/>
+<ellipse cx="76" cy="86" rx="48" ry="9" fill="#E8DCCB"/><ellipse cx="76" cy="87" rx="42" ry="6.5" fill="#4A2C1A"/>
+<path d="M64 86c6-3 18-3 24 0" stroke="#7A4F33" stroke-width="2" fill="none" stroke-linecap="round"/>
+<path d="M40 104v24c0 6 4 12 10 15" stroke="#fff" stroke-opacity=".55" stroke-width="5" fill="none" stroke-linecap="round"/>
+</svg>
+<div class="frame">
+<p class="heading">Slow mornings <em>start here.</em></p>
+<p class="sub">Single-origin &middot; Roasted weekly</p>
+</div>
+<button class="cta">Shop the roast</button>
+<div class="logo"><svg width="14" height="16" viewBox="0 0 14 16"><ellipse cx="7" cy="8" rx="6" ry="7.5" fill="#C8834A"/><path d="M7 1.5c-2.5 3-2.5 9 0 13" stroke="#2B1D14" stroke-width="1.4" fill="none"/></svg>BREWHAUS</div>
+</div>
+<script>
+window.onload=function(){document.fonts.ready.then(function(){
+gsap.registerPlugin(SplitText);
+var heading=document.querySelector(".heading"),sub=document.querySelector(".sub");
+var words=SplitText.create(sub,{type:"words",mask:"words"});
+var offset=sub.offsetTop-heading.offsetTop;
+document.querySelectorAll(".steam path").forEach(function(p,i){
+  var l=p.getTotalLength();
+  gsap.set(p,{strokeDasharray:l*.45+" "+l,strokeDashoffset:l*.45});
+  gsap.timeline({repeat:-1,delay:i*.55})
+    .fromTo(p,{strokeDashoffset:l*.45,opacity:0,y:6},{strokeDashoffset:-l*.55,opacity:.55,y:-4,duration:1.4,ease:"sine.inOut"})
+    .to(p,{opacity:0,duration:.5},"-=.5");
+});
+var press=gsap.timeline()
+  .fromTo(".cta",{clipPath:"inset(0 50% 0 50% round 4px)"},{clipPath:"inset(0 0% 0 0% round 4px)",duration:.7,ease:"power2.out"})
+  .to(".cta",{scale:.92,duration:.22,ease:"power1.inOut"},"+=.15")
+  .to(".cta",{scale:1,duration:.45,ease:"power2.out"});
+gsap.timeline({repeat:-1})
+  .fromTo(".frame",{opacity:0},{opacity:1,duration:.4,ease:"none"},0)
+  .fromTo(heading,{y:offset,opacity:0},{y:0,opacity:1,duration:1,ease:"power2.out"},.2)
+  .fromTo(words.words,{yPercent:150},{yPercent:0,duration:.55,stagger:.12,ease:"power2.out"},.85)
+  .add(press,1.6)
+  .fromTo(".cup",{scale:1},{scale:1.08,duration:6.5,ease:"none"},0)
+  .addLabel("outro",6.5)
+  .to([".frame",".cta"],{opacity:0,duration:.5,ease:"power1.in"},"outro")
+  .to(".cup",{scale:1,duration:1,ease:"power2.inOut"},"outro")
+  .set(".cta",{opacity:1,clipPath:"inset(0 50% 0 50% round 4px)"});
+})};
+</script></body></html>
